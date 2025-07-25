@@ -8,7 +8,7 @@ import { createApp, h } from 'vue'
 // Ziggy
 import { ZiggyVue } from 'ziggy-vue'
 import route from 'ziggy-js'
-import { Ziggy } from '../../vendor/tightenco/ziggy/dist/js/ziggy'
+import { Ziggy } from 'ziggy-js'
 
 import '../css/utilidades.css'
 
