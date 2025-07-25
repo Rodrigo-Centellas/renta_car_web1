@@ -5,10 +5,8 @@ import { createInertiaApp } from '@inertiajs/vue3'
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers'
 import { createApp, h } from 'vue'
 
-// Ziggy
-import { ZiggyVue } from 'ziggy-vue'
-import route from 'ziggy-js'
-import { Ziggy } from 'ziggy-js'
+// Ziggy (solo la función route y el objeto Ziggy)
+import route, { Ziggy } from 'ziggy-js'
 
 import '../css/utilidades.css'
 
@@ -22,15 +20,13 @@ createInertiaApp({
       import.meta.glob('./Pages/**/*.vue')
     ),
   setup({ el, App, props, plugin }) {
-    return createApp({ render: () => h(App, props) })
+    const app = createApp({ render: () => h(App, props) })
       .use(plugin)
-      .use(ZiggyVue, {
-        Ziggy,
-        route,
-      })
-      .mount(el)
+
+    // Hacer route() accesible en todos los templates
+    app.config.globalProperties.route = (...args) => route(...args, Ziggy)
+
+    return app.mount(el)
   },
-  progress: {
-    color: '#4B5563',
-  },
+  progress: { color: '#4B5563' },
 })
