@@ -13,7 +13,7 @@ import { Link } from '@inertiajs/vue3';
   >
     <!-- Logo -->
     <div>
-      <Link href="/" class="flex items-center space-x-2">
+      <Link :href="route('login')" class="flex items-center space-x-2">
         <ApplicationLogo
           class="h-20 w-20 fill-current text-main opacity-80"
           style="font-size: inherit"
